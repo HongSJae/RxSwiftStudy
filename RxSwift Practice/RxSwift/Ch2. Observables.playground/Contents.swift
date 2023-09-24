@@ -115,4 +115,25 @@ example(of: "create") {
 //    .disposed(by: disposeBag)
 }
 
+// MARK: - Observable Factory 만들기
+example(of: "deferred") {
+    let disposeBag = DisposeBag()
+    
+    var flip = false
+    
+    let factory: Observable<Int> = Observable.deferred {
+        flip.toggle()
+
+        return flip ? Observable.of(1, 2, 3) : .of(4, 5, 6)
+    }
+
+    for _ in 0...3 {
+        factory.subscribe(onNext: { element in
+            print(element, terminator: "")
+        })
+        .disposed(by: disposeBag)
+
+        print("")
+    }
+}
 }
