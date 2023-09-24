@@ -196,4 +196,33 @@ example(of: "Single") {
         .disposed(by: disposeBag)
 }
 
+//MARK: - Challenges
+
+/// Q. 앞선 never 예제에 do 연산자의 onSubscribe 핸들러를 이용해서 프린트 해 볼 것. dispose bag을 subscription에 추가하도록 할 것.
+example(of: "never") {
+    let observable = Observable<Any>.never()
+
+    let disposeBag = DisposeBag()
+    
+    observable
+        .do(
+            onSubscribe: { print("Subscribe") }
+        )
+        .subscribe(
+            onNext: { print($0) },
+            onCompleted: { print("Completed") }
+        )
+        .disposed(by: disposeBag)
+}
+
+/// Q. 1번 문제를 debug 연산자를 통해 프린트 해 볼 것.
+example(of: "never") {
+    let observable = Observable<Any>.never()
+
+    let disposeBag = DisposeBag()
+    
+    observable
+        .debug("never 확인")
+        .subscribe()
+        .disposed(by: disposeBag)
 }
