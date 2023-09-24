@@ -136,4 +136,64 @@ example(of: "deferred") {
         print("")
     }
 }
+
+// MARK: - Traits 사용
+/* Single
+- .success(value) or.error
+- .success = .next and .complete
+- 사용: 성공 또는 실패로 확인될 수 있는 1회성 프로세스 (예. 데이터 다운로드, 디스크에서 데이터 로딩)
+*/
+
+/* Completable
+- .complete or .error
+- 사용: 연산이 제대로 완료되었는지만 확인하고 싶을 때 (예. 파일 쓰기)
+*/
+
+/* Maybe
+- Single + Completable
+- success(value), .completed, .error를 모두 방출할 수 있다.
+- 사용: 프로세스가 성공, 실패 여부와 더불어 출력된 값도 내뱉을 수 있을 때
+- 자세한 내용은 Ch4. 부터 더 접할 수 있으며 지금은 아주 간단한 예제로만 확인하자
+*/
+
+example(of: "Single") {
+    
+    let disposeBag = DisposeBag()
+    
+    enum FileReadError: Error {
+        case fileNotFound, unreadable, encodingFailed
+    }
+    
+    func loadText(from name: String) -> Single<String> {
+        return Single.create{ single in
+            let disposable = Disposables.create()
+            
+            guard let path = Bundle.main.path(forResource: name, ofType: "txt") else {
+                single(.failure(FileReadError.fileNotFound))
+                return disposable
+            }
+            
+            guard let data = FileManager.default.contents(atPath: path) else {
+                single(.failure(FileReadError.unreadable))
+                return disposable
+            }
+            
+            guard let contents = String(data: data, encoding: .utf8) else {
+                single(.failure(FileReadError.encodingFailed))
+                return disposable
+            }
+            
+            single(.success(contents))
+            return disposable
+        }
+    }
+
+    loadText(from: "Copyright")
+        .subscribe(
+            onSuccess: { print($0) },
+            onFailure: { print($0) }
+        )
+        .disposed(by: disposeBag)
+}
+
 }
