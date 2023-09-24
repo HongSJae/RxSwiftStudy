@@ -13,6 +13,11 @@
 		9079949D2ABFDCED00DD0887 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9079949B2ABFDCED00DD0887 /* Main.storyboard */; };
 		9079949F2ABFDCEE00DD0887 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9079949E2ABFDCEE00DD0887 /* Assets.xcassets */; };
 		907994A22ABFDCEE00DD0887 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 907994A02ABFDCEE00DD0887 /* LaunchScreen.storyboard */; };
+		907994AD2ABFDD2300DD0887 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 907994AC2ABFDD2300DD0887 /* RxBlocking */; };
+		907994AF2ABFDD2300DD0887 /* RxBlocking-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 907994AE2ABFDD2300DD0887 /* RxBlocking-Dynamic */; };
+		907994B12ABFDD2300DD0887 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 907994B02ABFDD2300DD0887 /* RxCocoa */; };
+		907994B32ABFDD2300DD0887 /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 907994B22ABFDD2300DD0887 /* RxCocoa-Dynamic */; };
+		907994B52ABFDD2300DD0887 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 907994B42ABFDD2300DD0887 /* RxRelay */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,8 @@
 		9079949E2ABFDCEE00DD0887 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		907994A12ABFDCEE00DD0887 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		907994A32ABFDCEE00DD0887 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		907994AA2ABFDD1300DD0887 /* Ch1. JustFunction.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Ch1. JustFunction.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		907994B82ABFDE0E00DD0887 /* Ch2. Observables.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Ch2. Observables.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +38,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				907994B52ABFDD2300DD0887 /* RxRelay in Frameworks */,
+				907994B32ABFDD2300DD0887 /* RxCocoa-Dynamic in Frameworks */,
+				907994B12ABFDD2300DD0887 /* RxCocoa in Frameworks */,
+				907994AD2ABFDD2300DD0887 /* RxBlocking in Frameworks */,
+				907994AF2ABFDD2300DD0887 /* RxBlocking-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +52,7 @@
 		907994892ABFDCED00DD0887 = {
 			isa = PBXGroup;
 			children = (
+				907994B62ABFDDAF00DD0887 /* RxSwift */,
 				907994942ABFDCED00DD0887 /* RxSwift Practice */,
 				907994932ABFDCED00DD0887 /* Products */,
 			);
@@ -67,6 +80,15 @@
 			path = "RxSwift Practice";
 			sourceTree = "<group>";
 		};
+		907994B62ABFDDAF00DD0887 /* RxSwift */ = {
+			isa = PBXGroup;
+			children = (
+				907994AA2ABFDD1300DD0887 /* Ch1. JustFunction.playground */,
+				907994B82ABFDE0E00DD0887 /* Ch2. Observables.playground */,
+			);
+			path = RxSwift;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,6 +105,13 @@
 			dependencies = (
 			);
 			name = "RxSwift Practice";
+			packageProductDependencies = (
+				907994AC2ABFDD2300DD0887 /* RxBlocking */,
+				907994AE2ABFDD2300DD0887 /* RxBlocking-Dynamic */,
+				907994B02ABFDD2300DD0887 /* RxCocoa */,
+				907994B22ABFDD2300DD0887 /* RxCocoa-Dynamic */,
+				907994B42ABFDD2300DD0887 /* RxRelay */,
+			);
 			productName = "RxSwift Practice";
 			productReference = 907994922ABFDCED00DD0887 /* RxSwift Practice.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +140,9 @@
 				Base,
 			);
 			mainGroup = 907994892ABFDCED00DD0887;
+			packageReferences = (
+				907994AB2ABFDD2300DD0887 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 907994932ABFDCED00DD0887 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -361,6 +393,45 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		907994AB2ABFDD2300DD0887 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		907994AC2ABFDD2300DD0887 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 907994AB2ABFDD2300DD0887 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		907994AE2ABFDD2300DD0887 /* RxBlocking-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 907994AB2ABFDD2300DD0887 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxBlocking-Dynamic";
+		};
+		907994B02ABFDD2300DD0887 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 907994AB2ABFDD2300DD0887 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		907994B22ABFDD2300DD0887 /* RxCocoa-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 907994AB2ABFDD2300DD0887 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxCocoa-Dynamic";
+		};
+		907994B42ABFDD2300DD0887 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 907994AB2ABFDD2300DD0887 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9079948A2ABFDCED00DD0887 /* Project object */;
 }
